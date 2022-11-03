@@ -24,8 +24,18 @@ def get_shop_list_by_dishes(dishes_list, person_count):
 
     return shoping_list
 
+def get_shop_list_by_dishes_1(dishes_list, person_count):
+    shoping_list = {}
+    for dish in dishes_list:
+        for reсipe in cookbook[dish]:
+            shoping_list[reсipe.get('ingridient_name')] = {'measure': reсipe.get('measure'), 
+                'quantity': int(reсipe.get('quantity')) * person_count}  
+    return shoping_list
+    
+
 
 print(get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2))
+print(get_shop_list_by_dishes_1(['Запеченный картофель', 'Омлет'], 2))
                 
 
 

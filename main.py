@@ -1,6 +1,3 @@
-from distutils.command.install_egg_info import safe_name
-from xml.etree.ElementInclude import include
-
 
 with open('recipies.txt', 'rt') as file:
     cookbook = {}

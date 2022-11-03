@@ -1,5 +1,9 @@
+from distutils.command.install_egg_info import safe_name
+from xml.etree.ElementInclude import include
+
+
 with open('recipies.txt', 'rt') as file:
-    dishes = []
+    cookbook = {}
     for line in file:
         dishes_name = line.strip()
         ingridients_count = int(file.readline())
@@ -9,8 +13,26 @@ with open('recipies.txt', 'rt') as file:
             ingridient_name, quantity, measure = ingridient
             ingridients.append({'ingridient_name': ingridient_name, 'quantity': quantity,'measure': measure })
         file.readline()
-        cookbook = {dishes_name: ingridients }
-        dishes.append(cookbook)
+        cookbook[dishes_name] = ingridients
 
-print(dishes)
+# print(cookbook)
+
+def get_shop_list_by_dishes(dishes_list, person_count):
+    shoping_list = {}
+    for keys, values in cookbook.items():
+        if keys in dishes_list:
+            for ing_dit in values:
+                shoping_list[ing_dit.get('ingridient_name')] = {'measure': ing_dit.get('measure'), 
+                'quantity': int(ing_dit.get('quantity')) * person_count}  
+
+    return shoping_list
+
+
+print(get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2))
+                
+
+
+    
+
+
 

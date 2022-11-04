@@ -28,8 +28,8 @@ def get_shop_list_by_dishes_1(dishes_list, person_count):
     shoping_list = {}
     for dish in dishes_list:
         for reсipe in cookbook[dish]:
-            shoping_list[reсipe.get('ingridient_name')] = {'measure': reсipe.get('measure'), 
-                'quantity': int(reсipe.get('quantity')) * person_count}  
+            shoping_list[reсipe['ingridient_name']] = {'measure': reсipe['measure'], 
+                'quantity': int(reсipe['quantity']) * person_count}  
     return shoping_list
     
 

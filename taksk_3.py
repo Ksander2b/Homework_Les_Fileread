@@ -1,32 +1,22 @@
+def make_file_list(file_name):
+    list = []
+    list.append(file_name)
+    with open (file_name) as f:
+        list.append(str(len(f.readlines())))
+    with open (file_name) as f:
+        list.append(f.read())
+    return list
+    
+def right_sequence():
+    list = []
+    list.append(make_file_list('1.txt'))
+    list.append(make_file_list('2.txt'))
+    list.append(make_file_list('3.txt'))
+    list.sort(key=lambda x:x[1])
+    return list
 
-f_4 = open('final.txt', 'w')
-
-f_1 = open ('2.txt')
-f_4.write('2.txt \n')
-f_4.write(f'{str(len(f_1.readlines()))}\n')
-f_1.close()
-
-f_1 = open ('2.txt')
-f_4.write(f'{f_1.read()}\n')
-f_1.close()
-
-f_2 = open('1.txt')
-f_4.write('1.txt \n')
-f_4.write(f'{str(len(f_2.readlines()))} \n')
-f_2.close()
-
-f_2 = open('1.txt')
-f_4.write(f'{f_2.read()} \n')
-f_2.close()
-
-f_3 = open('3.txt')
-f_4.write('3.txt \n')
-f_4.write(f'{str(len(f_3.readlines()))}\n')
-f_3.close()
-
-f_3 = open('3.txt')
-f_4.write(f'{f_3.read()} \n')
-f_3.close()
-
-
-f_4.close()
+with open ('final.txt', 'w') as f:
+    for el in right_sequence():
+        f.write(f'{str(el[0])}\n')
+        f.write(f'{str(el[1])}\n')
+        f.write(f'{str(el[2])}\n')
